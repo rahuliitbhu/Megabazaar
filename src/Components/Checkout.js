@@ -90,6 +90,7 @@ const stripePromise = loadStripe('pk_test_51KTUccSJ2zFt2qTkt8pJLbKUpb81n9NBw7to2
         setDone(true)
 
         setpaymentProcess(false)
+        
         emptyCart()
        
      
@@ -97,7 +98,10 @@ const stripePromise = loadStripe('pk_test_51KTUccSJ2zFt2qTkt8pJLbKUpb81n9NBw7to2
       }
      
       if(error) return <h1 className='red-text'>Payment failed</h1>
-      if(done) return <h1 className='green-text'>Payment Successful</h1>
+      if(done) 
+      {return <h1 className='green-text'>Payment Successful</h1>
+
+    }
     
 
      if(paymentProcess) return <h1>Payment is Processing... Wait</h1>
