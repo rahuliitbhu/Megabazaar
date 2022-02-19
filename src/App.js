@@ -1,24 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css"
+import Home from "./Pages/Home";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  gql
+} from "@apollo/client";
+import { CartProvider, useCart } from "react-use-cart";
+import NavBar from "./Components/NavBar";
+import { BrowserRouter, useRoutes } from "react-router-dom";
+import routes from "./Routes";
+import '@brainhubeu/react-carousel/lib/style.css';
+import Category from "./Components/Category";
+
+const client = new ApolloClient({
+  uri: 'https://megashopping.herokuapp.com/graphql',
+  cache: new InMemoryCache()
+});
+const Routers=()=>{
+  const element=useRoutes(routes)
+  return(
+    <>
+    <NavBar/>
+    {element}
+    <Category/>
+    </>
+        
+      
+  )
+}
+
 
 function App() {
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CartProvider>
+    <BrowserRouter>
+      <ApolloProvider client={client}>
+      
+      <Routers/>
+     
+    </ApolloProvider>
+    </BrowserRouter>
+    </CartProvider>
+  
+   
   );
 }
 
