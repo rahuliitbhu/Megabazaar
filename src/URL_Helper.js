@@ -1,1 +1,1 @@
-export const URL_COMPLETER='https://megashopping.herokuapp.com'
+export const URL_COMPLETER='http://localhost:1337'
