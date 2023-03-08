@@ -15,7 +15,7 @@ import '@brainhubeu/react-carousel/lib/style.css';
 import Category from "./Components/Category";
 
 const client = new ApolloClient({
-  uri: 'https://megashopping.herokuapp.com/graphql',
+  uri: 'http://localhost:1337/graphql',
   cache: new InMemoryCache()
 });
 const Routers=()=>{
